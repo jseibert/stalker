@@ -17,8 +17,6 @@ module Stalker
     ttr   = opts[:ttr]   || 120
     beanstalk.use job
     beanstalk.put [ job, args ].to_json, pri, delay, ttr
-  rescue Beanstalk::NotConnected => e
-    failed_connection(e)
   end
 
   def job(j, &block)
